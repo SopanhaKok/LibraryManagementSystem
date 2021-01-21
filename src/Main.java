@@ -3,13 +3,16 @@ import DatabaseConfig.DatabaseConfig;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
+
 import Data.Book;
+import DatabaseManagement.BookAction;
 
 public class Main {
 
     //read input from keyboard
     static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
+    static BookAction book = new BookAction();
 
     public static void main(String[] args) throws Exception {
         String option = "";
@@ -71,7 +74,14 @@ public class Main {
     }
 
     public static void ListBooks() throws Exception{
-
+        List<Book> bookList = book.getAllBooks();
+        for(Book book: bookList)
+        {
+            //display book one by one
+            displayBook(book);
+        }
+        System.out.println("-----------------------------------------------");
+        System.out.println("\n");
 
     }
 
@@ -93,6 +103,15 @@ public class Main {
 
     public static void showBorrowedBook() throws Exception{
 
+    }
+
+    public static void displayBook(Book book)
+    {
+        System.out.println("Book ID: "+book.getBookId());
+        System.out.println("Book Name: "+book.getBookName());
+        System.out.println("Subject: "+book.getSubject());
+        System.out.println("Category: "+book.getCategoryName(book.getCategoryId()));
+        System.out.println("\n");
     }
 
 

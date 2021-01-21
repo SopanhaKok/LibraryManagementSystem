@@ -56,6 +56,12 @@ public class Book {
         this.categoryId = categoryId;
     }
 
+    public String getCategoryName(int categoryId){
+        CategoryAction getData = new CategoryAction();
+        Category category = getData.getCategoryById(categoryId);
+        return category.getCategoryName();
+    }
+
     @Override
     public String toString(){
         CategoryAction getData = new CategoryAction();
